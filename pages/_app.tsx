@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Image from 'next/image'
+import { SessionProvider } from "next-auth/react"
 import styles from '../styles/Home.module.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -12,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content="A nextjs demo project" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <SessionProvider session={pageProps.session}>
+        <Component {...pageProps} />
+      </SessionProvider>
       <footer className={styles.footer}>
         <a
           href="https://vercel.com"

@@ -1,8 +1,10 @@
 import type { NextPage } from 'next'
-import Image from 'next/image'
+import useRole from '../lib/hooks/useRole'
 import styles from '../styles/Home.module.css'
 
 const Uploads: NextPage = () => {
+  useRole('support')
+
   return (
     <div className={styles.container}>
 
@@ -16,7 +18,7 @@ const Uploads: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          // TODO
+
         </div>
       </main>
 

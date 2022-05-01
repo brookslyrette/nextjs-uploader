@@ -1,8 +1,10 @@
 import type { NextPage } from 'next'
-import Image from 'next/image'
+import useRole from '../lib/hooks/useRole'
 import styles from '../styles/Home.module.css'
 
 const Upload: NextPage = () => {
+  useRole('customer')
+
   return (
     <div className={styles.container}>
 
@@ -16,7 +18,7 @@ const Upload: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.wideCard}>
+          <a href='https://nextjs.org/docs' className={styles.wideCard}>
             <h2>Select file &rarr;</h2>
             <p>Browse your computer and select a <b>*.tgz</b> file to share with our support team</p>
           </a>
