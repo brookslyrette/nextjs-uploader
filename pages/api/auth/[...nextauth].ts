@@ -2,20 +2,32 @@ import NextAuth from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { User } from '../../../lib/model/model'
 
-// TODO: move passwords to ENV vars
+if (!process.env.SUPPORT_PASSWORD) {
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('`CUSTOMER_PASSWORD` is not set in production')
+  }
+  console.warn('WARNING: `SUPPORT_PASSWORD` is not set, defaulting to "password"')
+}
+if (!process.env.CUSTOMER_PASSWORD) {
+  if (process.env.NODE_ENV === 'production') {
+    throw new Error('`CUSTOMER_PASSWORD` is not set in production')
+  }
+  console.warn('WARNING: `CUSTOMER_PASSWORD` is not set, defaulting to "password"')
+}
+
 const users: User[] = [
   {
     id: '87164fa7-b3a4-4ac3-9f9a-a8100af6a514',
     name: 'support',
     // in production, this should be encrypted and salted
-    password: 'password',
+    password: process.env.SUPPORT_PASSWORD || 'password',
     role: 'support'
   },
   {
     id: 'f4e64234-7923-45e3-90f6-071eddc9d176',
     name: 'customer',
     // in production, this should be encrypted and salted
-    password: 'password',
+    password: process.env.CUSTOMER_PASSWORD || 'password',
     role: 'customer'
   },
 ]
