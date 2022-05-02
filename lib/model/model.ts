@@ -6,3 +6,22 @@ export type User = {
   password: string,
   role: Role
 }
+
+export type File = {
+  name: string
+  size: number | undefined,
+  lastModified: Date
+}
+
+export type FileList = File[]
+
+export type FileUploadDetails = {
+  url: URL,
+  form: {
+      [key: string]: string;
+  }
+}
+
+export type APIError = {
+  message: string
+}
