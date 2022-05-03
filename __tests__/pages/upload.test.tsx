@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { useSession } from 'next-auth/react'
 import '@testing-library/jest-dom'
 
-import Upload from '../upload'
+import Upload from '../../pages/upload'
 
 jest.mock("next-auth/react")
 

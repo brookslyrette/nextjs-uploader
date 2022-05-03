@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { useSession } from 'next-auth/react'
 import '@testing-library/jest-dom'
 
-import Home from '../index'
+import Home from '../../pages/index'
 
 jest.mock("next-auth/react")
 

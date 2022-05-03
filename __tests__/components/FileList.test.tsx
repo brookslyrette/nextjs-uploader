@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react'
-import FileList from '../FileList'
+import FileList from '../../components/FileList'
 import '@testing-library/jest-dom'
+import '@testing-library/jest-dom/extend-expect'
+import 'whatwg-fetch'
 
 describe('Home', () => {
   it('renders a loading state', () => {

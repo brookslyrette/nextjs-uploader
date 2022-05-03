@@ -4,7 +4,7 @@ import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import '@testing-library/jest-dom'
 
-import Uploads from '../uploads'
+import Uploads from '../../pages/uploads'
 
 jest.mock("next-auth/react")
 
