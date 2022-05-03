@@ -1,10 +1,10 @@
 ## Environment variables
 
-`AWS_ACCESS_KEY_ID`: An AWS access key used to write and read files on S3
+`UPLOADER_AWS_ACCESS_KEY_ID`: An AWS access key used to write and read files on S3
 
-`AWS_SECRET_ACCESS_KEY`: An AWS secret access key used to write and read files on S3
+`UPLOADER_AWS_SECRET_ACCESS_KEY`: An AWS secret access key used to write and read files on S3
 
-`AWS_S3_BUCKET`: The name of the AWS bucket where files are written
+`UPLOADER_AWS_S3_BUCKET`: The name of the AWS bucket where files are written
 
 `NEXTAUTH_SECRET`: Secret token used to encrypt JWT.
 

@@ -5,13 +5,13 @@ import { createPresignedPost } from "@aws-sdk/s3-presigned-post";
 import { FileList, FileUploadDetails } from "../model/model";
 
 const getS3Client = (): S3Client => {
-  if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY || !process.env.AWS_S3_BUCKET) {
+  if (!process.env.UPLOADER_AWS_ACCESS_KEY_ID || !process.env.UPLOADER_AWS_SECRET_ACCESS_KEY || !process.env.UPLOADER_AWS_S3_BUCKET) {
     throw new Error("Missing AWS configurartion")
   }
   const client = new S3Client({
     credentials: {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      accessKeyId: process.env.UPLOADER_AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.UPLOADER_AWS_SECRET_ACCESS_KEY,
     }
   })
   return client
@@ -24,7 +24,7 @@ const getS3Client = (): S3Client => {
 export const getFiles = async (): Promise<FileList> => {
   const client = getS3Client()
   const command = new ListObjectsV2Command({
-    Bucket: process.env.AWS_S3_BUCKET,
+    Bucket: process.env.UPLOADER_AWS_S3_BUCKET,
   });
 
   const response = await client.send(command)
@@ -53,7 +53,7 @@ export const getFiles = async (): Promise<FileList> => {
 export const getFile = async (filename: string): Promise<URL> => {
   const client = getS3Client()
   const command = new GetObjectCommand({
-    Bucket: process.env.AWS_S3_BUCKET,
+    Bucket: process.env.UPLOADER_AWS_S3_BUCKET,
     Key: filename
   });
 
@@ -69,7 +69,7 @@ export const getFile = async (filename: string): Promise<URL> => {
  * @returns {Promise<FileUploadDetails>}
  */
 export const getUploadURL = async (filename: string): Promise<FileUploadDetails> => {
-  if (!process.env.AWS_S3_BUCKET) {
+  if (!process.env.UPLOADER_AWS_S3_BUCKET) {
     throw new Error("Missing AWS bucket configurartion")
   }
   const client = getS3Client()
@@ -80,7 +80,7 @@ export const getUploadURL = async (filename: string): Promise<FileUploadDetails>
   const generatedFileName = filename.substring(0, p) + '.' + random + filename.substring(p);
 
   const presignedPost = await createPresignedPost(client, {
-    Bucket: process.env.AWS_S3_BUCKET,
+    Bucket: process.env.UPLOADER_AWS_S3_BUCKET,
     Key: `${generatedFileName}`,
     Expires: 600,
     Fields: {
