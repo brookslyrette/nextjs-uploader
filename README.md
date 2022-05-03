@@ -1,4 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Environment variables
+
+`AWS_ACCESS_KEY_ID`: An AWS access key used to write and read files on S3
+
+`AWS_SECRET_ACCESS_KEY`: An AWS secret access key used to write and read files on S3
+
+`AWS_S3_BUCKET`: The name of the AWS bucket where files are written
+
+`NEXTAUTH_SECRET`: Secret token used to encrypt JWT.
+
+`NEXTAUTH_URL`: The url the application is deployed on.
+
+`CUSTOMER_PASSWORD`: The password for the customer account.
+
+`SUPPORT_PASSWORD`: The password for the support account.
 
 ## Getting Started
 
