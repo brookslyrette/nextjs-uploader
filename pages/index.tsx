@@ -18,7 +18,7 @@ const Home: NextPage = () => {
               <Link href="/upload">
                 <a className={styles.wideCard}>
                   <h2>Upload logs (*.tgz) &rarr;</h2>
-                  <p><b>Clients:</b> Log in and upload a log file to share with our support team</p>
+                  <p>Click here to upload a log file to share with our support team</p>
                 </a>
               </Link>
             )}
@@ -27,15 +27,19 @@ const Home: NextPage = () => {
               <Link href="/uploads">
                 <a className={styles.wideCard}>
                   <h2>View logs &rarr;</h2>
-                  <p><b>Support team:</b> Log in to view clinent logs for troubleshooting</p>
+                  <p>Click here to view uploaded logs files</p>
                 </a>
               </Link>
             )}
           </>
         ) : (
           <a onClick={() => signIn()} className={styles.wideCard}>
-            <h2>Login &rarr;</h2>
-            <p>Log in to get started</p>
+            <h2>Get Started &rarr;</h2>
+            <p>
+              This application is written in TypeScript and uses Next.js. It supports two user roles: customer and support.
+              Authentication is implmented using Next-Auth. All files are uploaded to Amazon S3.
+            </p>
+            <p>Click here to log in and get started</p>
           </a>
         )}
       </div>
