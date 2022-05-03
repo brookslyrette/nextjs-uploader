@@ -2,6 +2,7 @@ import { signIn, signOut } from "next-auth/react"
 
 import styles from '../styles/Main.module.css'
 import { Session } from 'next-auth'
+import Link from "next/link"
 
 type HeaderProps = {
   session: Session | null
@@ -11,7 +12,9 @@ function Header({ session }: HeaderProps) {
   return (
     <header className={styles.header}>
       <h1 className={styles.title}>
-        <a href="/">Diag upload service</a>
+        <Link href='/'>
+          <a>Diag upload service</a>
+        </Link>
       </h1>
       <span className={styles.userDetails}>
         {session ?

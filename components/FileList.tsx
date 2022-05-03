@@ -20,7 +20,7 @@ export default function FileList(props: FileListProps) {
       </thead>
       <tbody>
         {state === 'loaded' ? (
-          files.map && files.map(file => <FileItem file={file} />)
+          files.map && files.map(file => <FileItem key={file.name} file={file} />)
         ) : (
           <tr>
             <td colSpan={3}>Loading...</td>

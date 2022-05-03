@@ -80,7 +80,7 @@ const Upload: NextPage = () => {
             <p>A support agent will get back to you shortly</p>
             <p>
               <a href='#' onClick={() => handleReset()}>
-                If you'd like to upload another file click here
+                If you&apos;d like to upload another file click here
               </a>
             </p>
           </div>
