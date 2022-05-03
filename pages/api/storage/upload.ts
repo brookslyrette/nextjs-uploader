@@ -21,6 +21,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return
   }
 
+  if (req.method !== "POST") {
+    res.status(405).json({
+      message: "Method Not Allowed"
+    })
+    return
+  }
+
   const filename = req.query.filename as string;
   if (!filename) {
     res.status(401).json({
@@ -39,7 +46,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     res.status(200).json(details)
   }
   catch (e) {
-    console.log(e)
     res.status(500).json({
       message: "Internal Server Error"
     })

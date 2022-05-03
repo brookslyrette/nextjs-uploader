@@ -1,33 +1,23 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Image from 'next/image'
-import { SessionProvider } from "next-auth/react"
-import styles from '../styles/Home.module.css'
+import { SessionProvider} from "next-auth/react"
+
+import styles from '../styles/Main.module.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Uploader</title>
+        <title>Diag upload service</title>
         <meta name="description" content="A nextjs demo project" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SessionProvider session={pageProps.session}>
-        <Component {...pageProps} />
+        <main className={styles.main}>
+          <Component {...pageProps} />
+        </main>
       </SessionProvider>
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   )
 }

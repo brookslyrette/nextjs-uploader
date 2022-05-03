@@ -1,28 +1,38 @@
 import type { NextPage } from 'next'
+import { useSession } from 'next-auth/react'
+import { useEffect, useState } from 'react'
+
+import styles from '../styles/Main.module.css'
+import Header from '../components/Header'
 import useRole from '../lib/hooks/useRole'
-import styles from '../styles/Home.module.css'
+import { File } from '../lib/model/model'
+import FileList from '../components/FileList'
+
+type State = 'loading' | 'loaded' | 'error'
 
 const Uploads: NextPage = () => {
   useRole('support')
 
+  const { data: session } = useSession()
+  const [ files, setFiles ] = useState<File[]>([])
+  const [ state, setState ] = useState<State>('loading')
+
+  useEffect(()  => {
+    (async () => {
+      const res = await fetch('/api/storage/list')
+      const files = await res.json()
+      setFiles(files)
+      setState('loaded')
+    })();
+  }, [])
+
   return (
-    <div className={styles.container}>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Uploaded log files
-        </h1>
-
-        <p className={styles.description}>
-          Select a log file for download
-        </p>
-
-        <div className={styles.grid}>
-
-        </div>
-      </main>
-
-    </div>
+    <>
+      <Header session={session} />
+      <div className={styles.grid}>
+        <FileList files={files} state={state} />
+      </div>
+    </>
   )
 }
 

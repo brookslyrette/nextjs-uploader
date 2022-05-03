@@ -1,14 +1,27 @@
 .container {
-  padding: 0 2rem;
+  padding: 0 1rem;
+}
+
+.header {
+  max-height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.header h1 {
+  font-size: 36px;
 }
 
 .main {
   min-height: 90vh;
-  padding: 4rem 0;
+  padding: 1rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
@@ -28,7 +41,7 @@
   flex-grow: 1;
 }
 
-.title a {
+.title a, .table a, .header a {
   color: #0070f3;
   text-decoration: none;
 }
@@ -56,33 +69,14 @@
   font-size: 1.5rem;
 }
 
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
 .grid {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   max-width: 800px;
-}
-
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  min-height: 600px;
+  height: 100%;
 }
 
 .wideCard {
@@ -118,6 +112,16 @@
 .logo {
   height: 1em;
   margin-left: 0.5rem;
+}
+
+.table {
+  width: 100%;
+  min-width: 50vw;
+}
+
+.table th {
+  text-align: left;
+  padding: 0.5rem 0;
 }
 
 @media (max-width: 600px) {

@@ -83,9 +83,11 @@ export const getUploadURL = async (filename: string): Promise<FileUploadDetails>
     Bucket: process.env.AWS_S3_BUCKET,
     Key: `${generatedFileName}`,
     Expires: 600,
+    Fields: {
+      // ensure files are downloaed when accessed from the browser
+      'Content-Disposition': `attachment; filename="${generatedFileName}"`,
+    }
   });
-
-  console.log(presignedPost);
 
   return {
     url: new URL(presignedPost.url),

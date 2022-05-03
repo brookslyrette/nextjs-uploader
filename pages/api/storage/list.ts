@@ -21,8 +21,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return
   }
 
+  if (req.method !== "GET") {
+    res.status(405).json({
+      message: "Method Not Allowed"
+    })
+    return
+  }
+
   try {
     const files = await getFiles()
+    files.sort((a, b) => a.lastModified > b.lastModified ? -1 : 1)
     res.status(200).json(files)
   }
   catch {
