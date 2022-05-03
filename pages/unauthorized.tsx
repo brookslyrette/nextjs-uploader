@@ -8,17 +8,16 @@ const Unauthorized: NextPage = () => {
   return (
     <>
       <Header session={session} />
-      <h1 className={styles.title}>
-        Access Denied
-      </h1>
-      <p>
-        {!!session && `Logged in as ${session?.user.name} `}
-      </p>
-      {!!session && (
-        <a href='#' onClick={() => signOut({
-          callbackUrl: '/',
-        })}>Log out</a>
-      )}
+      <div className={styles.grid}>
+        <div className={styles.wideCard}>
+          <h2>
+            Access Denied
+          </h2>
+          <p>
+            You are not authorized to view this page.
+          </p>
+        </div>
+      </div>
     </>
   )
 }

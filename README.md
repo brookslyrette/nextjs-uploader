@@ -10,9 +10,9 @@
 
 `NEXTAUTH_URL`: The url the application is deployed on.
 
-`CUSTOMER_PASSWORD`: The password for the customer account.
+`CUSTOMER_PASSWORD`: The password for the customer account. Required when `NODE_ENV=production`
 
-`SUPPORT_PASSWORD`: The password for the support account.
+`SUPPORT_PASSWORD`: The password for the support account. Required when `NODE_ENV=production`
 
 
 ## API
