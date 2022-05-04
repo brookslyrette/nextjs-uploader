@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 
-import styles from '../styles/Main.module.css'
 import Header from '../components/Header'
 import useRole from '../lib/hooks/useRole'
 import { File } from '../lib/model/model'
@@ -29,7 +28,7 @@ const Uploads: NextPage = () => {
   return (
     <>
       <Header session={session} />
-      <div className={styles.grid}>
+      <div>
         <FileList files={files} state={state} />
       </div>
     </>

@@ -1,6 +1,5 @@
 import { File } from "../lib/model/model"
 import FileItem from './FileItem'
-import styles from '../styles/Main.module.css'
 
 type FileListProps = {
   files: File[]
@@ -10,12 +9,12 @@ type FileListProps = {
 export default function FileList(props: FileListProps) {
   const { files, state } = props
   return (
-    <table className={styles.table}>
+    <table className="border-collapse table-auto w-full text-sm">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Size (bytes)</th>
-          <th>Last Modified</th>
+          <th className="border-b font-medium p-4 pl-8 pt-0 pb-3 text-left">Name</th>
+          <th className="border-b font-medium p-4 pl-8 pt-0 pb-3 text-left">Size (bytes)</th>
+          <th className="border-b font-medium p-4 pl-8 pt-0 pb-3 text-left">Last Modified</th>
         </tr>
       </thead>
       <tbody>
@@ -23,7 +22,7 @@ export default function FileList(props: FileListProps) {
           files.map && files.map(file => <FileItem key={file.name} file={file} />)
         ) : (
           <tr>
-            <td colSpan={3}>Loading...</td>
+            <td className="border-b font-medium p-4 pl-8 pt-0 pb-3 text-left" colSpan={3}>Loading...</td>
           </tr>
         )}
       </tbody>

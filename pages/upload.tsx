@@ -2,7 +2,6 @@ import React from 'react'
 
 import type { NextPage } from 'next'
 import useRole from '../lib/hooks/useRole'
-import styles from '../styles/Main.module.css'
 import Header from '../components/Header'
 import { useSession } from 'next-auth/react'
 
@@ -59,25 +58,26 @@ const Upload: NextPage = () => {
   return (
     <>
       <Header session={session} />
-      <div className={styles.grid}>
+      <div className='card'>
         {state === 'select' && (
-          <div onClick={() => openFileSelect()} className={styles.wideCard}>
+          <div onClick={() => openFileSelect()}>
             <h2>Select file &rarr;</h2>
-            <p>Browse your computer and select a <b>*.tgz</b> file to share with our support team</p>
+            <p>Click here to browse your computer and select a <b>*.tgz</b> file to share with our support team</p>
           </div>
         )}
 
         {state === 'in-progress' && fileRef.current?.files && (
-          <div className={styles.wideCard}>
+          <div>
             <h2>Uploading &hellip;</h2>
             <p>Uploading {fileRef.current?.files[0].name} file to share with our support team</p>
           </div>
         )}
 
         {state === 'complete' && fileRef.current?.files && (
-          <div className={styles.wideCard}>
+          <div>
             <h2>Thank you for uploading {fileRef.current?.files[0].name}</h2>
             <p>A support agent will get back to you shortly</p>
+            <br />
             <p>
               <a href='#' onClick={() => handleReset()}>
                 If you&apos;d like to upload another file click here

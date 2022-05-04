@@ -1,8 +1,6 @@
-import { signIn, signOut } from "next-auth/react"
-
-import styles from '../styles/Main.module.css'
+import { signIn, signOut } from 'next-auth/react'
 import { Session } from 'next-auth'
-import Link from "next/link"
+import Link from 'next/link'
 
 type HeaderProps = {
   session: Session | null
@@ -10,26 +8,24 @@ type HeaderProps = {
 
 function Header({ session }: HeaderProps) {
   return (
-    <header className={styles.header}>
-      <h1 className={styles.title}>
+    <header className="flex row items-center w-full justify-between my-8 py-2 border-b-2">
+      <h1 className="text-3xl">
         <Link href='/'>
           <a>Diag upload service</a>
         </Link>
       </h1>
-      <span className={styles.userDetails}>
-        {session ?
-          (
-            <div>
-              <span>Logged in as {session.user.name},</span>
-              &nbsp;<a href='#' onClick={() => signOut({
-                callbackUrl: '/',
-              })}>Log out</a>
-            </div>
-          ) :
-          (
-            <a href='#' onClick={() => signIn()}>Log in</a>
-          )}
-      </span>
+      {session ?
+        (
+          <div>
+            <span>Logged in as {session.user.name},</span>
+            &nbsp;<a className='link' onClick={() => signOut({
+              callbackUrl: '/',
+            })}>Log out</a>
+          </div>
+        ) :
+        (
+          <a className='link' onClick={() => signIn()}>Log in</a>
+        )}
     </header>
   )
 }
