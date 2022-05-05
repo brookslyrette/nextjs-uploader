@@ -158,7 +158,7 @@ https://nextjs-uploader-git-main-brookslyrette.vercel.app/
 
 ## Getting Started
 
-*Note: ensure you've set all the required `ENV` vars*
+*Note: ensure you've set all the required `ENV` vars in your environment*
 
 First, run the development server:
 
